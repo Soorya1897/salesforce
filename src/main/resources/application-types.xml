@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="contactdata" format="json">
+      <types:shape format="weave" example="examples/salesforceUpsertTestData.json"><![CDATA[%dw 2.0
+
+type contactdata = Array<{|  firstname: String,   lastname: String,   email: String,   mobile: String|}> {"example": "[{\\\"firstname\\\":\\\"AB\\\",\\\"lastname\\\":\\\"C\\\",\\\"email\\\":\\\"abc@gmail.com\\\",\\\"mobile\\\":\\\"231243442\\\"},{\\\"firstname\\\":\\\"DE\\\",\\\"lastname\\\":\\\"F\\\",\\\"email\\\":\\\"def@gmail.com\\\",\\\"mobile\\\":\\\"758698798\\\"}]"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#7108b974-de0d-42e5-b2ca-b2567380f56d">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="contactdata"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
